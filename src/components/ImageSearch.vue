@@ -64,10 +64,10 @@ export default {
       this.items = [];
       this.getData();
     }, 250),
-    // getMoreData() {
-    //   this.page++;
-    //   this.getData();
-    // },
+    getMoreData() {
+      this.page++;
+      this.getData();
+    },
     navigateToImage(id) {
       this.$router.push({ name: 'ImageDetails', params: { id } })
     }
