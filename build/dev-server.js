@@ -11,6 +11,15 @@ var express = require('express')
 var webpack = require('webpack')
 var proxyMiddleware = require('http-proxy-middleware')
 var webpackConfig = require('./webpack.dev.conf')
+const fs = require('fs');
+const endpoint = process.env.API_BASE_URL;
+
+if (!endpoint) {
+  throw `Missing env variable API_BASE_URL.`;
+}
+
+const output = `module.exports = "${endpoint}";`;
+fs.writeFileSync('./src/endpoint.js', output, 'utf-8');
 
 // default port where dev server listens for incoming traffic
 var port = process.env.PORT || config.dev.port
